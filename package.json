@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-  "author": "Ali Baş",
+  "author": "Ali Baskoylu",
   "license": "ISC",
   "dependencies": {
     "database-js": "^3.0.10",
