@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ScrumIT - Giriş Yap</title>
+		<link rel="stylesheet" href="/CSS/login">
+		<link rel="stylesheet" href="/CSS/bootstrap.min">
+	</head>
+	<body>
+		<div class="login-form">
+			<h1>ScrumIT - Giriş Yap</h1>
+			<h1><b>HAZIRLAYAN: ALİ BAŞKÖYLÜ</b></h1>
+			<% if (typeof err != "undefined" ) { %>
+				<div class="alert alert-danger alert-dismissible fade show" role="alert">
+					<%= err %>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			<% } %>
+			<form action="doLogin" method="POST">
+				<input type="text" name="username" placeholder="Kullanıcı Adı" maxlength="30" required>
+				<input type="password" name="password" placeholder="Şifre" maxlength="30" required>
+				
+				<input type="submit">
+				<b><a href="/register">Hesabınız yok mu? Kayıt olun.</a></b>
+				<br>
+				
+			</form>
+			
+		</div>
+
+		<script src="/JS/jquery.min"></script>
+		<script src="/JS/bootstrap.min"></script>
+	</body>
+</html>

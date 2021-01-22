@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ScrumIT - Projeyi Yönet - <%= project.name %></title>
+		<link rel="stylesheet" href="/CSS/panel">
+        <link rel="stylesheet" href="/CSS/bootstrap.min">
+        
+        <script src="/JS/jquery.min"></script>
+        <script src="/JS/jquery-ui"></script>
+        <script src="/JS/bootstrap.min"></script>
+	</head>
+	<body>
+		<div class="panel-container">
+            <br>
+            <h4 style="text-align:center"><a href="/"><strong>Anasayfaya Dön</strong></a></h4>
+            <h1>PROJE: <%= project.name %></h1>
+            <p style="text-align:center"><%= project.desc %></p>
+            <p style="text-align:center"><a href="/task/add/<%= project.id %>" style="width: 60% !important; color: white" class="btn btn-dark btn-lg">İŞ EKLE</a></p>
+            <!-- SCRUM DRAG&DROP BOARD BAŞLANGIÇ -->
+            <div class="container scrum row">
+                <div class="column">
+                <p class="column-title">YAPILACAKLAR</p>
+                <div id=0 class="cards">
+                    <% tasks.forEach(function(task) { %>
+                        <% if (task.position == 0) { %>
+                        <div id=<%= task.id %> class="card">
+                            <h5><%= task.title %></h5>
+                            <p><%= task.text %></p>
+                            <p><strong>ZORLUK: <%= task.hardness %></strong></p>
+                            <p><strong>TAHMİNİ SÜRE: </strong><%= Math.round(task.hardness*(task.title.length + task.text.length)/40 * 100) / 100 %> Gün</p>
+                            <a href="/task/<%= task.id %>/edit" class="btn btn-dark btn-sm">Görüntüle/Düzenle</a>
+                        </div>
+                        <% } %>
+                    <% }); %>
+                </div>
+                </div>
+            
+                <div class="column">
+                <p class="column-title">YAPILIYOR</p>
+                <div id=1 class="cards">
+                    <% tasks.forEach(function(task) { %>
+                        <% if (task.position == 1) { %>
+                        <div id=<%= task.id %> class="card">
+                            <h5><%= task.title %></h5>
+                            <p><%= task.text %></p>
+                            <p><strong>ZORLUK: <%= task.hardness %></strong></p>
+                            <p><strong>TAHMİNİ SÜRE: </strong><%= Math.round(task.hardness*(task.title.length + task.text.length)/40 * 100) / 100 %> Gün</p>
+                            <a href="/task/<%= task.id %>/edit" class="btn btn-dark btn-sm">Görüntüle/Düzenle</a>
+                        </div>
+                        <% } %>
+                    <% }); %>
+                </div>
+                </div>
+            
+                <div class="column">
+                <p class="column-title">BİTTİ</p>
+                <div id=2 class="cards">
+                    <% tasks.forEach(function(task) { %>
+                        <% if (task.position == 2) { %>
+                        <div id=<%= task.id %> class="card">
+                            <h5><%= task.title %></h5>
+                            <p><%= task.text %></p>
+                            <p><strong>ZORLUK: <%= task.hardness %></strong></p>
+                            <p><strong>TAHMİNİ SÜRE: </strong><%= Math.round(task.hardness*(task.title.length + task.text.length)/40 * 100) / 100 %> Gün</p>
+                            <a href="/task/<%= task.id %>/edit" class="btn btn-dark btn-sm">Görüntüle/Düzenle</a>
+                        </div>
+                        <% } %>
+                    <% }); %>
+                </div>
+                </div>
+            </div>
+            <!-- SCRUM DRAG&DROP BOARD SON -->
+            <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Projeyi Düzenle</h4>
+                    <form action="editProject" method="POST">
+                        <input type="hidden" name="id" value="<%= project.id %>">
+                        <input type="hidden" name="owner" value="<%= project.owner %>">
+                        <input type="text" name="name" placeholder="Proje Adı" value="<%= project.name %>" maxlength="50" required>
+                        <input type="text" name="desc" placeholder="Proje Açıklaması" value="<%= project.desc %>" maxlength="120" required>
+                        <input type="submit" value="Projeyi Düzenle">
+                    </form>
+                </div>
+            </div>
+
+            <br><br>
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Projeyi Sil</h4>
+                    <form action="deleteProject" method="POST">
+                        <% if (typeof delErr != "undefined" ){ %>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <%= delErr %>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <% } %>
+                        <input type="hidden" name="id" value="<%= project.id %>">
+                        <input type="hidden" name="owner" value="<%= project.owner %>">
+                        <div class="input-group mb-3">
+                            <input type="password" name="password" class="form-control" placeholder="Hesap Şifreniz">
+                            <div class="input-group-append">
+                              <button class="btn btn-danger" type="submit">Projeyi Sil</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            </div>
+		</div>
+
+        <script>
+            //kaldır bırak listenerları başlatalım
+            $(function() {
+                addListeners();
+            });
+
+            //kaldır bırak listenerlar
+            function addListeners() {
+                $(".card").draggable({
+                    revert: "invalid",
+                    start: function() {
+                        $(this).addClass("selected");
+                    },
+                    stop: function() {
+                        $(this).removeClass("selected")
+                    }
+                });
+
+                $(".column").droppable({
+                    accept: ".card",
+                    drop: function(event, ui) {
+
+                        var moving = ui.draggable
+                        .css("left", "0")
+                        .css("top", "0")
+                        .appendTo($(this).find(".cards"));
+                        
+                        var targetId = moving.closest('.cards').attr('id');
+
+                        var movingId = moving.attr('id');
+
+                        $.ajax({url: "move/"+movingId+"/"+targetId, success: function(result){
+                            console.log(result);
+                        }});
+                    }
+                });
+            }
+        </script>
+	</body>
+</html>

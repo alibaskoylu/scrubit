@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ScrumIT - Projeleriniz</title>
+		<link rel="stylesheet" href="/CSS/projects">
+		<link rel="stylesheet" href="/CSS/bootstrap.min">
+	</head>
+	<body>
+		<div class="list-container">
+            <h1>Hoşgeldiniz, <%= user.username %>.</h1>
+            <form action="doLogout" method="POST">
+                <input type="submit" value="Çıkış Yap">
+            </form>
+
+			<h1>Projeleriniz</h1>
+			<div class="list-group projects">
+                <% projects.forEach(function(project) { %>
+                    <a href="/project/<%= project.id %>" class="list-group-item list-group-item-action">
+                        <strong><%= project.name %></strong><br>
+                        <small><%= project.desc %></small>
+                    </a>
+                <% }); %>
+                <% if (projects.length == 0) { %>
+                <span class="list-group-item">
+                    Hiç projeniz yok.
+                </span>
+                <% } %>
+            </div>
+            <br><br>
+            <div class="list-group">
+                <h1>Proje Ekle</h1>
+                <% if (typeof err != "undefined" ) { %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <%= err %>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <% } %>
+                <form action="addProject" method="POST">
+                    <input type="text" name="name" placeholder="Proje Adı" maxlength="50" required>
+                    <input type="text" name="desc" placeholder="Proje Açıklaması" maxlength="120" required>
+                    <input type="submit" value="EKLE">
+                </form>
+            </div>
+		</div>
+
+		<script src="/JS/jquery.min"></script>
+		<script src="/JS/bootstrap.min"></script>
+	</body>
+</html>

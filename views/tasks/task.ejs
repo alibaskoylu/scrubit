@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ScrumIT - İşi Yönet - <%= task.title %></title>
+		<link rel="stylesheet" href="/CSS/panel">
+        <link rel="stylesheet" href="/CSS/bootstrap.min">
+        
+        <script src="/JS/jquery.min"></script>
+        <script src="/JS/jquery-ui"></script>
+        <script src="/JS/bootstrap.min"></script>
+	</head>
+	<body>
+		<div class="panel-container">
+            <br>
+            <h4 style="text-align:center"><a href="/project/<%= task.projectId %>"><strong>Projeye Dön</strong></a></h4>
+            <h1>İŞ ADI: <%= task.title %></h1>
+            <p style="text-align:center">TARİH: <%= task.date ? task.date : (new Date().toJSON().slice(0,10).replace(/-/g,'/')) %></p>
+            <p style="text-align:center">İŞ/KART NO: <%= task.id %></p>
+            <p style="text-align:center">TEKNİK UZMAN: <%= user.username %></p>
+            <p style="text-align:center">İŞİN AÇIKLAMASI: <%= task.text %></p>
+            <p style="text-align:center">NOTLAR: <%= task.notes %></p>
+            <p style="text-align:center">PROJE NO: <%= task.projectId %></p>
+            <p style="text-align:center">TAHMİNİ SÜRE: <%= Math.round(task.hardness*(task.title.length + task.text.length)/40 * 100) / 100 %> Gün</p>
+            <p style="text-align:center">GEÇEN SÜRE: <%= task.date ? ((new Date()).getTime() - (new Date(task.date)).getTime())/(1000 * 3600 * 24) : 1 %> Gün</p>
+
+            <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">İşi Düzenle</h4>
+                    <form action="../editTask" method="POST">
+                        <input type="hidden" name="id" value="<%= task.id %>">
+                        <input type="hidden" name="owner" value="<%= task.owner %>">
+                        <input type="hidden" name="projectId" value="<%= task.projectId %>">
+                        <input type="text" name="title" placeholder="İş Adı" value="<%= task.title %>" maxlength="50" required>
+                        <input type="text" name="text" placeholder="İşin Açıklaması" value="<%= task.text %>" maxlength="120" required>
+                        <div class="form-group">
+                            <label for="notes">Notlar:</label>
+                            <textarea class="form-control" name="notes" id="notes" rows="5"><%= task.notes %></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="hardness">Zorluk:</label>
+                            <input type="range" class="custom-range" min="1" max="10" name="hardness" id="hardness" value=<%= task.hardness %> required>
+                        </div>
+                        <div class="form-group">
+                            <label for="records">İş Takibi (Her Satıra Bir Kayıt):</label>
+                            <textarea class="form-control" name="records" id="records" rows="5"><%= task.records %></textarea>
+                        </div>
+                        <input type="submit" value="İşi Düzenle">
+                    </form>
+                </div>
+            </div>
+	</body>
+</html>
