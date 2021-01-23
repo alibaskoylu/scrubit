@@ -7,6 +7,11 @@
 
 #### Şifre: deneme 
 
+### ÖNEMLİ DOSYALAR
+- test_caseler.txt (Kullanım senaryolarını içeren txt dosyası.)
+- DB_DIAGRAM.png (Veritabanı yapısını ve ilişkilerini açıklayan Database diyagramı PNG formatında)
+- DB_DIAGRAMI.pdf (Veritabanı yapısını ve ilişkilerini açıklayan Database diyagramı PDF belge formatında)
+
 ### EKLENEN İŞLERE GÖRE PROJE BÜYÜKLÜĞÜ TAHMİNLEMESİ
 Projenin ne kadar süreceği tahmin edilirken projede kullanıcı tarafından belirlenen iş zorluğu çarpı işin başlık ve açıklama metni toplam uzunlukları bölü 40 denklemi uygulanır. Deneme yanılmalar sonucu denklemde en ideal orantıyı 40 a böldüğümüzde almaktayız. Denklem gün olarak sonuç verir. Ölçümler her iş için ayrı ayrı proje görüntüleme ekranında yazar.
 
