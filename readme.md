@@ -12,9 +12,9 @@ Projenin ne kadar süreceği tahmin edilirken projede kullanıcı tarafından be
 
 ### KULLANILAN TEKNOLOJİLER: 
 - Node | Yazılımın temel mimarisi Node üzerine kuruludur.
-- ExpressJS | GET, POST gibi metodlarla gelen API üç nokta istekleri ExpressJS yardımı ile yanıtlanmıştır.
+- ExpressJS | GET, POST gibi metodlarla gelen API uç nokta istekleri ExpressJS yardımı ile yanıtlanmıştır.
 - EJS | HTML dosyalarının içine dinamik olarak güncellebilen veri koymaya yarayan Express ile koordine çalışan taslak yapısıdır. PHP ye benzer çalışır. 
-- ExpressJS-Sessions | Oturumlar ve kullanıcı sisteminin client üzerindeki hareketleri ExpressJS-Sessions ile şifreli ve güvenli bir şekilde sağlanmıştır.
+- ExpressJS-Sessions | Oturumlar ve kullanıcı sisteminin client üzerindeki hareketleri ExpressJS-Sessions ile şifreli ve güvenli bir şekilde sağlanmıştır. Çerezlere benzer çalışır.
 - Database-JS | Ekstra yapı(MySQL, SQLite...) ya da sunucu kullanılmaya gerek kalmadan JSON dosyaları üzerinden veritabanı oluşturulmuş ve SQL syntax ile kullanılmıştır.
 - JQuery | Temel DOM ve JavaScript işlemlerini kolaylaştırmıştır.
 - BootStrap | Kullanışlı, modern, gelişmiş ve etkileyici bir arayüzün çok fazla CSS ile yüz göz olunmadan oluşturulmasını sağlamıştır.
@@ -23,10 +23,10 @@ Projenin ne kadar süreceği tahmin edilirken projede kullanıcı tarafından be
 
 ### ScrumIT TEKNIK DETAYLAR
 - Veritabanında ID baz alınarak normalizasyon işlemi yapılmıştır. İşler projenin ID sini ProjectId sütununda, kullanıcının ID sini Owner sütünunda işaret ederken, projeler de kullanıcıların ID sini Owner sütunundan işaret etmektedir. Veritabanında gereksiz verinin ve veri tekrarının tamamen önüne geçilmiştir.
-- Yaklaşık 1000 satır kod yazılmıştır. Yazılımın ileride geliştirilmesini zorlaştırmayacak bütün gereksiz kod tekrarı özellikle kullanılan Node paketleri sayesinde engellenmiştir.
+- Yaklaşık 1000 satır kod yazılmıştır. Yazılımın ileride geliştirilmesini zorlaştırmadan bütün gereksiz kod tekrarı özellikle kullanılan Node paketleri sayesinde engellenmiştir.
 - Çalışma süresi ve işlem yükü tölere edilebilir seviyededir.
 - Az kullanılan döngüler sayesinde sunucu eş zamanlı olarak düşük ping ile binlerce kullanıcıya sorunsuzca client açabilir.
 - Temel güvenlik testlerinden geçmiştir.
 - İzinsiz dosya konumlarına ekstra güvenlik için Express aracılığı ile belirli olanlar harici HTTP GET ya da POST tamamen yasaklanmıştır.
 - XSS açıklarına karşı ekstra önlem olarak JS ve CSS dosyaları özel 2 adet API uç noktasından temin edilmektedir.
-- Kolayca tek rakam değişikliği ile veya sunucuda PORT isimli ortam değişkeni belirlenerek herhangi bir port üzerinden çalıştırılabilir.
+- Kolayca tek sayı değişikliği ile veya sunucuda PORT isimli ortam değişkeni belirlenerek herhangi bir port üzerinden çalıştırılabilir.
