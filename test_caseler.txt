@@ -4,12 +4,12 @@ Girdiler: Kullanıcı adı bilgisi, Kullanıcı parola bilgisi, Kullanıcı paro
 Beklenen çıktılar: Kullanıcının sisteme basarılı bir sekilde kayıt olarak giriş ekranına yönlendirilmesidir.
 Kriterler: Kullanıcının parola alanına ve parola tekrarına en az 1 haneli en fazla 30 haneli şifreyi aynı olarak girmesi. En az 1 hane en fazla 30 hane kullanıcı adı belirtmesi.
 Hata Kriterleri: Kullanıcının daha önce kullanılmış bir kullanıcı adı girmesi. Kullanıcının şifresiyle tekrarlanan şifrenin uyuşmaması ya da şifre, şifre tekrarı ve kullanıcı adından herhangi birinin 30 karakteri aşması.
-Test Prosedürü: Test kullanıcısı, mobil ve kişisel bilgisayar tarayıcılarında belirtilen girdilerle testi gerçeklestirmelidir. Test islemini tamamladuktan sonra test sonucunu Geçti/Kaldı olarak belirterek nedenleri ile birlikte raporlamalıdır.
+Test Prosedürü: Test kullanıcısı, mobil ve kişisel bilgisayar tarayıcılarında belirtilen girdilerle testi gerçeklestirmelidir. Test islemini tamamladıktan sonra test sonucunu Geçti/Kaldı olarak belirterek nedenleri ile birlikte raporlamalıdır.
 
 Risk: Level Yüksek
 Amaç: Kullanıcının sisteme başarıyla giriş yapması amaçlanmaktadır.
 Girdiler: Kullanıcı adı bilgisi, Kullanıcı parola bilgisi, Kullanıcı giriş butonu tetiklemesi
 Beklenen çıktılar: Kullanıcının sisteme basarılı bir sekilde giriş yaparak home ekranına yönlendirilmesidir.
-Kriterler: Kullanıcının parola alanına ve parola tekrarına en az 1 haneli en fazla 30 haneli şifreyi veritabanında md5 hashleri aynı olacak şekilde önceden belirlediği gibi girmesi. En az 1 hane en fazla 30 hane kullanıcı adı girmesi.
+Kriterler: Kullanıcının parola alanına en az 1 haneli en fazla 30 haneli şifreyi veritabanında kayıtlı kullanıcı şifreyle md5 hashleri aynı olacak şekilde önceden belirlediği gibi girmesi. En az 1 hane en fazla 30 hane kullanıcı adı girmesi.
 Hata Kriterleri: Kullanıcının veritabanında bulunmayan bir kullanıcı adı girmesi. Kullanıcının şifresinin md5 hash değeriyle veritabanındaki şifrenin hash değerinin uyuşmaması ya da şifre ve kullanıcı adından herhangi birinin 30 karakteri aşması.
-Test Prosedürü: Test kullanıcısı, mobil ve kişisel bilgisayar tarayıcılarında belirtilen girdilerle testi gerçeklestirmelidir. Test islemini tamamladuktan sonra test sonucunu Geçti/Kaldı olarak belirterek nedenleri ile birlikte raporlamalıdır.
+Test Prosedürü: Test kullanıcısı, mobil ve kişisel bilgisayar tarayıcılarında belirtilen girdilerle testi gerçeklestirmelidir. Test islemini tamamladıktan sonra test sonucunu Geçti/Kaldı olarak belirterek nedenleri ile birlikte raporlamalıdır.
