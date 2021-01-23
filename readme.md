@@ -22,7 +22,7 @@ Projenin ne kadar süreceği tahmin edilirken projede kullanıcı tarafından be
 - Body-Parser | Form GET-POST verilerinin çözümlenmesine yardımcı bir pakettir.
 
 ### ScrumIT TEKNIK DETAYLAR
-- Veritabanında ID baz alınarak normalizasyon işlemi yapılmıştır. İşler projenin ID sini ProjectId sütununda, kullanıcının ID sini Owner sütünunda işaret ederken, projeler de kullanıcıların ID sini Owner sütunundan işaret etmektedir. Veritabanında gereksiz verinin ve veri tekrarının tamamen önüne geçilmiştir.
+- 3 adet temel tablodan oluşmaktadır. Bu tablolar Projects(Projeler), Tasks(İşler) ve Users(Kullanıcılar) tablolarıdır. Veritabanında ID baz alınarak normalizasyon işlemi yapılmıştır. İşler projenin ID sini projectId sütununda, kullanıcının ID sini owner sütünunda işaret ederken, projeler de kullanıcıların ID sini owner sütunundan işaret etmektedir. Veritabanında gereksiz verinin ve veri tekrarının tamamen önüne geçilmiştir.
 - Yaklaşık 1000 satır kod yazılmıştır. Yazılımın ileride geliştirilmesini zorlaştırmadan bütün gereksiz kod tekrarı özellikle kullanılan Node paketleri sayesinde engellenmiştir.
 - Çalışma süresi ve işlem yükü tölere edilebilir seviyededir.
 - Az kullanılan döngüler sayesinde sunucu eş zamanlı olarak düşük ping ile binlerce kullanıcıya sorunsuzca client açabilir.
