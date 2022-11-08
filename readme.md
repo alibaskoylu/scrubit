@@ -1,5 +1,5 @@
 # ScrumIT XP Temelli Scrum Task Board Uygulaması - Final Projesi
-## HAZIRLAYAN: ALİ BAŞKÖYLÜ
+
 
 ## [PROJEYİ ÇALIŞIR HALDE GÖRMEK İÇİN TIKLAYIN](https://ali-baskoylu.herokuapp.com/)
 
